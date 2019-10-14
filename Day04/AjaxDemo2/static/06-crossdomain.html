@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>跨域</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <button id="btn">跨域请求</button>
+  <div id="show"></div>
+  <script>
+    /**
+     * 跨域调用的方法，由服务器端来指定调用
+     * */
+    function print(data){
+      console.log("服务器端传递的数据:"+data);
+    }
+
+    $(function(){
+      $("#btn").click(function(){
+        //正常的ajax请求无法完成跨域访问
+        /*var url = "http://127.0.0.1:5000/06-server"
+        $.get(url,function(data){
+          $("#show").html(data);
+        });*/
+
+        //原生的js完成跨域请求
+        //获取页面上的body标签
+        var body = document.getElementsByTagName("body")[0];
+        //动态的创建一对script标记，来完成ｊｓ的请求，
+        //通过<script>产生的请求，响应回来的数据一律当成js脚本被执行
+        var script = document.createElement("script");
+        //为script标记的type属性赋值
+        script.type = "text/javascript"
+        //指定script标记的请求地址,callback参数表示告诉后端前端处理响应数据的函数名
+        script.src = "http://127.0.0.1:5000/06-server?callback=print";
+        //将script标记追加到当前页面：也就是向src的地址发送请求，同时接收响应数据，响应数据直接交给了页面，由页面当成js的脚本去执行
+        body.append(script);
+
+        //return "show('这是server_06响应回来的数据')"
+      });
+    });
+
+  </script>
+</body>
+</html>

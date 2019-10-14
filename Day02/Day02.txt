@@ -1,0 +1,153 @@
+1.cookie
+	1.保存cookie的值到浏览器
+		响应对象.set_cookie(key,value,max_age)
+	2.获取cookie的值
+		request.cookies : 类型为字典
+		request.cookies['get']
+		request.cookies.get('get','')
+		if 'get' in request.cookies:
+			... ...
+	3.删除cookie的值
+		响应对象.delete_cookie('key')	
+2.session
+	from flask import session
+	app.config['SECRET_KEY'] = 'XXXXXX'
+	
+	1.保存session的值
+		session['key'] = 值
+	2.获取session的值
+		session['key']
+	3.删除session的值
+		del session['key']
+3.XMLHttpRequest - xhr
+	1.作用
+		代替浏览器异步的向服务器发送请求并接收响应
+	2.创建 xhr 
+		主流浏览器：XMLHttpRequest 
+		IE6- ：ActiveXObject("Microsoft.XMLHTTP")
+================================================
+1.AJAX
+	1.创建 xhr
+	2.xhr 的成员
+		1.方法 - open()
+			作用：创建请求
+			语法：open(method,url,asyn)
+				method:请求方式，取值'get' 或 'post'
+				url:请求地址，字符串
+				asyn:是否采用异步的方式
+					true:异步
+					false:同步
+			ex:
+				xhr.open('get','/server',true);
+		2.属性 - readyState
+			作用：请求状态，通过不同的请求状态来表示xhr与服务器的交互情况
+			由0-4共5个值来表示5个不同的状态
+			0 ：请求尚未初始化
+			1 ：已经与服务器建立连接
+			2 ：服务器端已接收请求
+			3 ：请求正在处理中
+			4 ：响应已经完成
+		3.属性 - status
+			作用：服务器端的响应状态码
+				200 ：表示服务器正确处理所有的请求以及给出响应
+				404 ：请求资源不存在
+				500 ：服务器内部错误
+				... ...
+		4.事件 - onreadystatechange
+			作用：每当xhr的readyState发生改变的时候都要触发的操作 - 回调函数
+				只有当readyState的值为4并且status的值为200的时候，才可以正常的去接收响应数据
+		5.属性 - responseText
+			作用：响应数据
+		6.方法 - send()
+			作用：通知xhr向服务器端发送请求
+			语法：send(body)
+				get请求：body的值为null
+					send(null)
+				post请求：此处为要提交的数据
+					send("请求数据")
+	3.AJAX的操作步骤
+		1.GET请求
+			1.创建 xhr 对象
+			2.创建请求 - open()
+			3.设置回调函数 - onreadystatechange
+				判断状态并接收响应数据
+			4.发送请求 - send()
+
+			请求参数：
+				推荐：请求地址后拼QueryString
+					xhr.open('get','/02-server?key=value&key=value',true)
+		2.POST请求
+			ajax的post请求，会把 Content-Type 请求消息头的值修改为 "text/plain;charset=utf-8"，导致了服务器端没有办法正常接收数据
+			解决方案：将Content-Type请求消息头的值再更改回application/x-www-form-urlencoded 即可
+			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+2.JSON
+	1.JSON介绍
+		JSON:JavaScript Object Notation
+					JS        对象   表现形式
+
+		在ajax中，允许将 复杂格式的响应数据 构建成 JSON的格式再进行响应输出
+	2.JSON表现
+		1.JSON表示单个对象
+			1.使用 {} 表示单个对象
+			2.在 {} 中使用 key:value 的形式来表示属性(数据)
+			3.Key必须要用 " " 引起来
+			4.value如果是字符串的话，也需要用" "引起来
+
+			ex:
+				var obj = {
+					"name":"王老师",
+					"age" : 30,
+					"gender" : "Unknown"
+				}
+		2.JSON表示一个数组
+			1.使用 [] 表示一个数组
+			2.数组中允许包含若干JSON对象 或 字符串
+				1.使用JSON数组表示若干字符串
+					var arr = ["王伟超","王夫人","王小超"];
+				2.使用JSON数组表示若干对象
+					保存 3个人的信息(name,age,gender)
+					var arr = [
+						{
+							"name":"王老师",
+							"age":30,
+							"gender":"男"
+						},
+						{
+							"name":"王夫人",
+							"age":28,
+							"gender":"男"
+						}
+					];
+	3.使用 jq 的 each() 迭代数组
+		1. $arr.each();
+			$arr : jQuery中的数组
+			语法：
+				$arr.each(function(index,obj){
+					index:遍历出来的元素的下标
+					obj:遍历出来的元素
+				});
+		2.$.each();
+			语法：
+				$.each(arr,function(index,obj){});
+					arr : js 中的普通数组
+			
+
+
+
+
+
+
+
+
+
+
+
+werkzeug.exceptions.HTTPException.wrap.<locals>.newcls: 400 Bad Request: KeyError: 'uname'
+
+Content-Type:text/plain;charset=utf-8
+Content-Type:application/x-www-form-urlencoded
+
+
+
+
+

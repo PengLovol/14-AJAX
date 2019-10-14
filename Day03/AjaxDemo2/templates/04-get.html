@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <button id="btnGet">发送get请求</button>
+  <div id="show"></div>
+
+  <script src="/static/js/jquery-1.11.3.js"></script>
+  <script>
+    $(function(){
+      $("#btnGet").click(function(){
+        $.get('/04-server',function(resText){
+          /*console.log("type："+typeof(resText));
+          console.log(resText);*/
+          $.each(resText,function(i,obj){
+            console.log(obj.id + ":" + obj.cityname);
+          });
+        },'json');
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="/static/js/common.js"></script>
+  <script src="/static/js/jquery-1.11.3.js"></script>
+  <script>
+    $(function(){
+      $("#showAll").click(function(){
+        var xhr = createXhr();
+        xhr.open('get','/01-server',true);
+        xhr.onreadystatechange = function(){
+          if(xhr.readyState==4&&xhr.status==200){
+            var arr = JSON.parse(xhr.responseText);
+            var html = "";
+            $.each(arr,function(i,obj){
+              html += "<tr>";
+                html += "<td>"+obj.id+"</td>";
+                html += "<td>"+obj.uname+"</td>";
+                html += "<td>"+obj.upwd+"</td>";
+                html += "<td>"+obj.realname+"</td>";
+              html += "</tr>";
+            });
+            $("#show-body").html(html);
+          }
+        }
+        xhr.send(null);
+      });
+    });
+  </script>
+</head>
+<body>
+  <button id="showAll">显示所有数据</button>
+  <table border="1">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>用户名</th>
+        <th>密码</th>
+        <th>真实姓名</th>
+      </tr>
+    </thead>
+    <tbody id="show-body">
+
+    </tbody>
+  </table>
+</body>
+</html>

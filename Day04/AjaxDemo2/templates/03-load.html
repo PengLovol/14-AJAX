@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <button id="btnLoad">使用load方法加载</button>
+  <div id="show"></div>
+  <script src="/static/js/jquery-1.11.3.js"></script>
+  <script>
+    $(function(){
+      $("#btnLoad").click(function(){
+        //var params = "name=sf.zh&age=85";
+        var params = {
+          "name":'yinsusu',
+          "age":25,
+        }
+        $("#show").load(
+          '/03-server',
+          params,
+          function(resText,statusText){
+            /*console.log("resText:"+resText);
+            console.log("statusText:"+statusText);*/
+
+            $(this).html("<h1>"+resText+"</h1>");
+          });
+      });
+    });
+  </script>
+</body>
+</html>

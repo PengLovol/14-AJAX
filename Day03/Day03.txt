@@ -1,0 +1,129 @@
+1.xhr的成员
+	xhr ： XMLHtttpRequest
+	1.创建请求 - open()
+		open(method,url,asyn)
+	2.xhr的请求状态 - readyState
+		0 : 请求尚未初始化
+		1 : 建立连接
+		2 : 服务器接收请求
+		3 : 请求处理中
+		4 : 响应完成
+	3.服务器端的响应状态 - status
+		200 : 服务器端正常处理
+	4.每当请求状态发生改变时要激发的事件 - onreadystatechange
+		xhr.onreadystatechange = function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				console.log(xhr.responseText)
+			}
+		}
+	5.发送请求 - send(body)
+		如果是get请求方式，body应为 null
+		如果是post请求方式，body则为拼好的参数字符串
+	6.设置请求消息头 - setRequestHeader(header,content)
+		xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+2.AJAX的使用步骤
+	1.GET请求
+		1.创建 xhr
+		2.创建请求
+		3.设置回调函数
+		4.发送请求
+	2.POST请求
+		1.创建 xhr
+		2.创建请求
+		3.设置回调函数
+		4.设置请求消息头 - Content-Type
+		5.发送请求
+3.JSON
+	JSON ：JavaScript Object Notation
+	1.作用
+		约束前后端交互数据的格式
+	2.JSON 的格式
+		1.表示单个对象
+			1.使用 {} 表示一个对象
+			2.{} 中采用 key:value 的格式保存数据
+			3.key必须使用""引起来
+			4.value如果是字符串的话，也必须使用""引起来
+			5.多对 key:value，使用 , 隔开
+		2.表示数组
+			1.使用 [] 来表示一个数组
+			2.数组中允许包含若干字符串 或 对象
+				arr = [
+					{},
+					{},
+					{}
+				]
+4.jq中的循环遍历
+	1.
+		$arr.each(function(i,obj){
+			$arr : 表示的是jq中的数组
+			i : 表示的当前元素的下标
+			obj : 表示的是当前元素
+		});
+	
+	2.
+		$.each(arr,function(i,obj){
+			arr : 表示的是普通数组
+			i : 表示的是当前元素的下标
+			obj : 表示的是当前元素
+		});
+
+=========================================
+1.JSON
+	1.后台处理JSON
+		在后台查询出数据再转换为JSON格式的字符串，再响应给前端。到了前端后再将字符串转换为JS对象
+		1.后台先获取数据
+			类型允许为：
+				1.元组
+				2.列表
+				3.字典
+		2.在后台将数据转换为符合JSON格式的字符串
+		3.在后台将JSON格式的字符串进行响应
+		4.在前端将JSON格式的字符串解析成JS对象
+	2.Python中的JSON处理
+		元组，列表，字典
+		使用Python 中的 json 类就可以完成转换
+		import json
+		jsonStr = json.dumps(元组|列表|字典)
+		return jsonStr
+	3.前端中的JSON处理
+		由于在服务器端响应回来的数据是 String，有些时候有必要将响应回来的数据转换为JS对象或数组
+			在JS中
+				JSON对象=JSON.parse(JSON字符串)
+2.JQUERY AJAX
+	在 jquery 中提供了对原生的AJAX的封装
+
+	1.$obj.load(url,data,callback)
+		作用：异步加载数据到 $obj 元素中
+		参数：
+			1.url ：异步请求的地址
+			2.data ：传递给服务器端的参数(可选)
+				1.可以传递普通字符串
+					"name=zhangsf&age=85"
+				2.可以传递JSON
+					{
+						"name":"zhangsf",
+						"age":85
+					}
+			3.callback ：异步请求完成后要执行的操作(可选)
+				回调函数
+				function(resText,statusText){
+					resText : 响应数据
+					statusText : 响应的状态文本
+				}
+	2.$.get(url,data,callback,type)
+		1.url : 异步请求地址
+		2.data : 请求提交的数据
+			可以是字符串，可以是JSON
+		3.callback : 请求成功时的回调函数
+			function(resText){
+				resText : 表示响应回来的文本
+			}
+		4.type : 响应回来的数据的类型
+			1.html : 响应回来的文本是html文本
+			2.text : 响应回来的文本是普通文本
+			3.json : 响应回来的数据是JSON对象
+
+
+
+
+

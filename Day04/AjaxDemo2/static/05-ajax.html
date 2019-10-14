@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <p>
+    用户名：<input type="text" id="uname">
+  </p>
+  <button id="btnAjax">查询</button>
+  <p id="show"></p>
+  <script>
+    $(function(){
+      $("#btnAjax").click(function(){
+        //使用get请求方式，发送参数名为uname的数据到服务器
+        $.ajax({
+          //请求地址
+          url:'/05-serveelse{
+              //data中没有id属性，说明查询失败
+              html += "<h3>"+data.msg+"</h3>";
+            }
+            $("#show").html(html);r',
+          //请求方式
+          type:'get',
+          //请求参数
+          data:"uname="+$("#uname").val(),
+          //响应回来的数据格式
+          dataType:'json',
+          //请求和响应成功后的回调函数
+          success:function(data){
+            var html = "";
+            if(data.id){
+              //如果data中有id属性的话，则说明查询成功
+              html += "<h3>id:"+data.id+"</h3>";
+              html += "<h3>uname:"+data.uname+"<h3>";
+              html += "<h3>upwd:"+data.upwd+"</h3>";
+              html += "<h3>realname:"+data.realname+"</h3>";
+            }else{
+              //data中没有id属性，说明查询失败
+              html += "<h3>"+data.msg+"</h3>";
+            }
+            $("#show").html(html);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+  <script src="jquery-1.11.3.js"></script>
+  <script>
+	var arr = [
+		{
+			"name":"王老师",
+			"age":40,
+			"gender":"男"
+		},
+		{
+			"name":"王夫人",
+			"age":28,
+			"gender":"男"
+		}
+	];
+
+	/*for(var i=0;i<arr.length;i++){
+		var obj = arr[i];
+		console.log('姓名:' + obj.name);
+		console.log('年龄:' + obj.age);
+		console.log('性别:' + obj.gender);
+	}*/
+
+	/*使用jquery 循环遍历 arr */
+	/*$(arr).each(function(i,obj){
+		console.log("下标为"+i+"的元素:");
+		console.log("姓名:"+obj.name);
+		console.log("年龄:"+obj.age);
+		console.log("性别:"+obj.gender);
+	});*/
+
+	$.each(arr,function(i,obj){
+		console.log("下标为"+i+"的元素:");
+		console.log("姓名:"+obj.name);
+		console.log("年龄:"+obj.age);
+		console.log("性别:"+obj.gender);
+	});
+  </script>
+ </body>
+</html>
