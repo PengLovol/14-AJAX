@@ -5,7 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:123456@localhost:3306/flask";
+app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:123456@localhost:3306/flask"
 db = SQLAlchemy(app)
 
 class Users(db.Model):

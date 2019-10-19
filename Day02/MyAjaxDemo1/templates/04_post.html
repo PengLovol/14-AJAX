@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>04_post</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <button id="btnPost">发送POST请求</button>
+    <p id="show"></p>
+    <script>
+        $(function () {
+            $('#btnPost').click(function () {
+                 //1.获取xhr
+                var xhr=createXhr1();
+                //2.创建请求
+                xhr.open('post','/04_server',true);
+                //3.设置回调函数
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4 && xhr.status==200){
+                        $('#show').html(xhr.responseText);
+                    }
+                };
+                //设置Content-Type请求消息头
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                //4.发送请求
+                xhr.send("uname=sf.zh&age=85");
+            });
+        });
+    </script>
+</body>
+</html>

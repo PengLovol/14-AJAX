@@ -85,6 +85,8 @@
 			3.安全性问题
 				session  安全级别较高
 				cookie   安全级别较低
+
+			练习1：
 3.AJAX
 	1.什么是AJAX
 		Asynchronous Javascript And Xml

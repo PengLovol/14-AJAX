@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_index.html</title>
+</head>
+<body>
+
+    {% if params.uname %}
+        <h3>
+            欢迎：{{ params.uname }}
+            <a href="/sign_out">退出</a>
+        </h3>
+    {% else %}
+        <h3>
+            <a href="/sign_in">登录</a>
+        </h3>
+    {% endif %}
+</body>
+</html>

@@ -93,13 +93,13 @@
 	在 jquery 中提供了对原生的AJAX的封装
 
 	1.$obj.load(url,data,callback)
-		作用：异步加载数据到 $obj 元素中
+		作用：异步加载数据到 $obj 元素中  #主要用途是用于调用写好的模板网页
 		参数：
 			1.url ：异步请求的地址
 			2.data ：传递给服务器端的参数(可选)
 				1.可以传递普通字符串
-					"name=zhangsf&age=85"
-				2.可以传递JSON
+					"name=zhangsf&age=85"  :get方法
+				2.可以传递JSON              ：post方法
 					{
 						"name":"zhangsf",
 						"age":85
@@ -112,17 +112,17 @@
 				}
 	2.$.get(url,data,callback,type)
 		1.url : 异步请求地址
-		2.data : 请求提交的数据
+		2.data(可省略) : 请求提交的数据
 			可以是字符串，可以是JSON
-		3.callback : 请求成功时的回调函数
+		3.callback（不建议省略） : 请求成功时的回调函数
 			function(resText){
 				resText : 表示响应回来的文本
 			}
-		4.type : 响应回来的数据的类型
+		4.type(可省略) : 响应回来的数据的类型
 			1.html : 响应回来的文本是html文本
 			2.text : 响应回来的文本是普通文本
-			3.json : 响应回来的数据是JSON对象
-
+			3.json : 响应 回来的数据是JSON对象
+    2.$.post(url,data,callback,type) #同上
 
 
 

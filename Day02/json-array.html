@@ -20,21 +20,22 @@
 		}
 	];
 
-	/*for(var i=0;i<arr.length;i++){
+	for(var i=0;i<arr.length;i++){
 		var obj = arr[i];
 		console.log('姓名:' + obj.name);
 		console.log('年龄:' + obj.age);
 		console.log('性别:' + obj.gender);
-	}*/
-
+	}
+    console.log("-------------");
 	/*使用jquery 循环遍历 arr */
-	/*$(arr).each(function(i,obj){
+	$(arr).each(function(i,obj){
 		console.log("下标为"+i+"的元素:");
 		console.log("姓名:"+obj.name);
 		console.log("年龄:"+obj.age);
 		console.log("性别:"+obj.gender);
-	});*/
-
+	});
+    console.log("-------------");
+    console.log($(arr));
 	$.each(arr,function(i,obj){
 		console.log("下标为"+i+"的元素:");
 		console.log("姓名:"+obj.name);

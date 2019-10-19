@@ -5,15 +5,19 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:123456@localhost:3306/flask"
+app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:120913@localhost:3306/flask"
 db = SQLAlchemy(app)
 
 class Users(db.Model):
-  __tablename__ = "users"
+  __tablename__ = "users2"
   id = db.Column(db.Integer,primary_key=True)
   uname = db.Column(db.String(50))
   upwd = db.Column(db.String(50))
   realname = db.Column(db.String(30))
+  def __init__(self,uname,upwd,realname):
+    self.uanme=uname
+    self.upwd=upwd
+    self.realname=realname
 
   # 将当前对象中的所有属性封装到一个字典中
   def to_dict(self):
@@ -24,7 +28,6 @@ class Users(db.Model):
       'realname':self.realname
     }
     return dic
-
 
   def __repr__(self):
     return "<Users:%r>" % self.uname
@@ -103,13 +106,15 @@ def json_views():
 
 @app.route('/json_users')
 def json_users():
-  user = Users.query.filter_by(id=1).all()
-  list = []
-  for u in user:
-    list.append(u.to_dict())
-  return json.dumps(list)
-
-
+  user = Users.query.filter_by(id=1).first()
+  print(user)
+  # list = []
+  # for u in user:
+  #   list.append(u.to_dict())
+  # return json.dumps(list)
+  return 'ok'
+#
+#
 @app.route('/01-users')
 def users_01():
   return render_template('01-users.html')

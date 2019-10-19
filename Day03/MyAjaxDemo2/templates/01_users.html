@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_users</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#showAll').click(function () {
+                //1.创建xhr
+                var xhr=createXhr1();
+                //2.创建请求
+                xhr.open('get','/01_server',true)
+                //3.回调函数
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var arr=JSON.parse(xhr.responseText);
+                        html_add="";
+                        $.each(arr,function (i,obj) {
+                            html_add+="<tr>";
+                            html_add+="<td>"+obj.id+"</td>";
+                            html_add+="<td>"+obj.uname+"</td>";
+                            html_add+="<td>"+obj.upwd+"</td>";
+                            html_add+="<td>"+obj.realname+"</td>";
+
+                        });
+                        $("#show-body").html(html_add);
+
+                    }
+                };
+                //4.发送请求
+                xhr.send(null);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button id="showAll">显示所有数据</button>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>真实姓名</th>
+            </tr>
+        </thead>
+        <tbody id="show-body">
+
+        </tbody>
+    </table>
+</body>
+</html>

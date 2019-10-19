@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>06_checkname</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+    <p>
+        登录名：<input type="text" id="username">
+        <span id="show"></span>
+    </p>
+    <script>
+        $(function () {
+            $("#username").blur(function () {
+                //1.创建xhr
+                var xhr=createXhr1();
+                //2.创建请求
+                xhr.open('post','/06_server',true);
+                //3.设置回调函数
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4&&xhr.status==200){
+                        $('#show').html(xhr.responseText);
+                    }
+                };
+                //4.设置请求消息头
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+                //5.发送请求
+                xhr.send("username="+$("#username").val());
+            });
+
+        });
+    </script>
+</body>
+</html>

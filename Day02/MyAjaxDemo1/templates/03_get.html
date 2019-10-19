@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+</head>
+<body>
+    姓名：<input type="text" id="uname">
+    <button id='btnSend'>发送AJAX请求</button>
+    <p id="show"></p>
+<script>
+      $(function(){
+      $("#btnSend").click(function(){
+        //1.创建xhr
+        var xhr1 = createXhr1();
+        //2.创建请求
+        var url = "/03_server?uname="+$("#uname").val();
+        xhr1.open('get',url,true);
+        //3.设置回调函数
+        xhr1.onreadystatechange = function(){
+          if(xhr1.readyState==4&&xhr1.status==200){
+            $("#show").html(xhr1.responseText);
+          }
+        };
+        //4.发送请求
+        xhr1.send(null);
+      });
+    });
+</script>
+</body>
+</html>

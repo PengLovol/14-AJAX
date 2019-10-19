@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_get.html</title>
+
+</head>
+<body>
+    <button onclick="send_ajax()">发送AJAX请求</button>
+    <p id="show"></p>
+    <script src="/static/js/common.js"></script>
+    <script >
+        function send_ajax() {
+            //1.创建xhr
+            var xhr1=createXhr();
+            //2. 创建请求
+            //xhr.open(method,url,asyn)
+            xhr1.open('get','/02_server',true);
+            //3.设置回调函数（判断状态接收响应数据）
+            //xhr.onreadystatechange=function(){}
+            xhr1.onreadystatechange=function () {
+                if(xhr1.readyState==4 && xhr1.status==200){
+                    //xhr的自身状态是4并且服务器的状态是200就可以接收响应数据
+                    document.getElementById('show').innerHTML=xhr1.responseText;
+                }
+            };
+            //4.发送请求
+            xhr1.send(null);
+        }
+    </script>
+
+</body>
+</html>

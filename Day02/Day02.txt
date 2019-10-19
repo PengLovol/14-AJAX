@@ -80,6 +80,7 @@
 			ajax的post请求，会把 Content-Type 请求消息头的值修改为 "text/plain;charset=utf-8"，导致了服务器端没有办法正常接收数据
 			解决方案：将Content-Type请求消息头的值再更改回application/x-www-form-urlencoded 即可
 			xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
 2.JSON
 	1.JSON介绍
 		JSON:JavaScript Object Notation
