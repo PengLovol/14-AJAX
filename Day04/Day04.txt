@@ -78,7 +78,7 @@
 
 		$.ajax({
 			url:'xxx',
-			type:'get',
+			type:'get',      //跨域只接受get请求
 			dataType:'jsonp',//指定为跨域访问
 			jsonp:'callback',//定义了callback的参数名，以便获取callback传递过去的函数名
 			jsonpCallback:'xxx' //定义jsonp的回调函数名

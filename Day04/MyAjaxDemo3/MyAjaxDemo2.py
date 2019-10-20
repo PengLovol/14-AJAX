@@ -267,6 +267,9 @@ def server_07():
     'to':'Saipan',
     'time':'16:55'
   }
+  a=json.dumps(dic)
+  print(a,type(a))
+  print(cb,type(cb))
   # flight({'flightNO':'MU763'...})
   return cb+"("+json.dumps(dic)+")"
 
