@@ -88,6 +88,7 @@
 
 
          create database blog default charset utf8 collate utf8_general_ci;
+         mysql  -u root -p blog < blog.sql
 
 
 
