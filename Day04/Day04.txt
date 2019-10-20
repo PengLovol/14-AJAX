@@ -24,7 +24,7 @@
 	3.$.post()
 ======================================================
 1.JQ 对 ajax 的支持
-	1.$.ajax()
+	1.$.ajax()   #/static/05_ajax.html
 		语法： $.ajax({请求参数的JSON对象});
 			参数对象中的属性：
 				1.url : 字符串，表示异步请求的地址
@@ -73,7 +73,7 @@
 	2.解决方案
 		通过 <script> 向服务器资源发送请求
 		由服务器资源指定前端页面的哪个方法来执行响应的数据
-	3.jquery 的跨域
+	3.jquery 的跨域 :/static/06_crossdomain.html
 		jsonp - json with padding
 
 		$.ajax({

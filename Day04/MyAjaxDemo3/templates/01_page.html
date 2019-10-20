@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01_page</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            /*为#btn绑定click事件*/
+            $("#btn").click(function () {
+                //1.创建xhr
+                var xhr=createXhr1();
+                //2.创建请求
+                xhr.open('get','/json',true);
+                //3.设置回调函数
+                xhr.onreadystatechange=function () {
+                    if(xhr.readyState==4&&xhr.status==200){
+                        var resText=xhr.responseText;
+                        console.log(resText);
+                        console.log(typeof(resText));
+
+                        //将resText　转换为　JSON对象
+                        var arr=JSON.parse(resText);
+                        console.log(typeof(arr));
+                        console.log(arr);
+                        $.each (arr,function (i,obj) {
+                            console.log(obj.name);
+                            console.log(obj.age);
+                            console.log(obj.gender);
+
+                        })
+                    }
+                };
+                //4.发送请求
+                xhr.send(null)
+            });
+        })
+    </script>
+</head>
+<body>
+    <button id="btn">JSON</button>
+</body>
+</html>

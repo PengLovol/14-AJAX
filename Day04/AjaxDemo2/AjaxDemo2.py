@@ -5,11 +5,11 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:123456@localhost:3306/flask"
+app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:120913@localhost:3306/flask"
 db = SQLAlchemy(app)
 
 class Users(db.Model):
-  __tablename__ = "users"
+  __tablename__ = "users2"
   id = db.Column(db.Integer,primary_key=True)
   uname = db.Column(db.String(50))
   upwd = db.Column(db.String(50))

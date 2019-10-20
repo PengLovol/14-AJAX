@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02_province</title>
+    <script src="/static/js/common.js"></script>
+    <script src="/static/js/jquery-1.11.3.js"></script>
+    <script>
+        function loadPro() {
+           {# // 1.创建xhr
+            var xhr1=createXhr1();
+            //2.创建请求
+            //false : 表示采用同步的方式执行，必须保证loadPro()执完毕之后才能执行其他的操作
+            xhr1.open('get','/02_loadPro',false);
+            //3.创建回调函数
+            xhr1.onreadystatechange=function () {
+                if(xhr1.readyState==4&&xhr1.status==200){
+                    var arr=JSON.parse(xhr1.responseText);
+                    var html="";
+                    $.each(arr,function (i,obj) {
+                        html += "<option value='"+obj.id+"'>";
+                        html+=obj.proname;
+                        html+="</option>";
+                    });
+                    $("#selPro").html(html);
+
+                }
+            };
+            //4.发送请求
+            xhr1.send(null);#}
+
+            //使用 $.ajax()
+            $.ajax({
+                url:'/02_loadPro_ajax',
+                type:'get',
+                dataType:'json',
+                async:false,
+                success:function (data) {
+                    var html="";
+                    $.each(data,function (i,obj) {
+                        html+= "<option value='"+obj.id+"'>";
+                        html+=obj.proname;
+                        html+="</option>";
+                    });
+                     $("#selPro").html(html);
+                }
+
+                });
+        }
+
+         /**
+     * 根据省份的id查询对应的所有的城市信息
+     * 参数pid:要查询的省份的id
+     * */
+         function loadCit(pid) {
+             //**********方法1*********
+{#             // 1.创建xhr
+            var xhr1=createXhr1();
+            //2.创建请求
+             var url='/02_loadCity?pid='+pid;
+            xhr1.open('get',url,true);
+            //3.创建回调函数
+             xhr1.onreadystatechange=function () {
+                 if(xhr1.readyState==4&&xhr1.status==200){
+                     var arr=JSON.parse(xhr1.responseText);
+                     html="";
+                     $.each(arr,function (i,obj) {
+                          html+="<option value='"+obj.id+"'>";
+                          html+=obj.cityname;
+                          html+="</option>";
+                     });
+                     $("#selCity").html(html);
+                 }
+             };
+             xhr1.send(null);#}
+             //**********方法2*********
+             //使用 $.ajax()
+{#             $.ajax({
+                 url:'/02_loadCity_ajax?pid='+pid,
+                 type:'get',
+                 dataType:'json',
+                 async:true,
+                  success:function (data) {
+                      html="";
+                      $.each(data,function (i,obj) {
+                          html+="<option value='"+obj.id+"'>";
+                          html+=obj.cityname;
+                          html+="</option>";
+                      });
+                      $("#selCity").html(html);
+                  }
+             });#}
+
+             //**********方法3*********
+             $.get(
+                "/02_loadCity_ajax",
+                 {'pid':pid},
+                 function (data) {
+                     html="";
+                      $.each(data,function (i,obj) {
+                          html+="<option value='"+obj.id+"'>";
+                          html+=obj.cityname;
+                          html+="</option>";
+                      });
+                      $("#selCity").html(html);
+
+                 },
+                 'json'
+             );
+
+         }
+        //网页加载函数
+        $(function () {
+            //加载所有 的省份信息
+            loadPro();
+            //为selPro绑定change事件
+            $("#selPro").change(function () {
+                loadCit(this.value);
+            });
+            /**调用loadCity(),先将默认的城市加载进来*/
+            console.log($("#selPro").val());
+            loadCit($("#selPro").val());
+        });
+    </script>
+</head>
+<body>
+    <select id="selPro">
+    </select>
+    <select id="selCity">
+    </select>
+</body>
+</html>

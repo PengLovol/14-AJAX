@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.11.3.js"></script>
+</head>
+<body>
+  <button id="btnShow">显示</button>
+  <div id="show"></div>
+  <script>
+    function flight(data){
+      html = "";
+      html += "<h3>航班号:"+data.flightNO+"</h3>";
+      html += "<h3>出发:"+data.from+"</h3>";
+      html += "<h3>到达:"+data.to+"</h3>";
+      html += "<h3>时间:"+data.time+"</h3>";
+      $("#show").html(html);
+    }
+
+    $(function(){
+      $("#btnShow").click(function(){
+        //原生的跨域请求
+        var body = document.getElementsByTagName("body")[0];
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = "http://127.0.0.1:5000/07_server?callback=flight";
+        body.append(script);
+
+        //jquery跨域请求　－　jsonp
+        /*$.ajax({
+          url : 'http://127.0.0.1:5000/07-server',
+          type : 'get',
+          dataType : "jsonp",
+          jsonp:'callback',
+          jsonpCallback:'flight'
+        });*/
+
+        //jquery 跨域请求　- jsonp (简易版)
+        /*$.ajax({
+          url : 'http://127.0.0.1:5000/07_server',
+          type : 'get',
+          dataType : 'jsonp',
+          success:function(data){
+            console.log("航班:"+data.flightNO);
+            console.log("出发:"+data.from);
+            console.log("到达:"+data.to);
+            console.log("时间:"+data.time);
+          }
+        });*/
+
+      });
+    });
+  </script>
+</body>
+</html>
