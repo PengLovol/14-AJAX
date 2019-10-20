@@ -1,0 +1,6 @@
+1.实现 user 业务逻辑包
+	http://localhost:5000/user
+	执行 user 中的视图 ：这是 user 中的首页
+
+	使用蓝图(Blueprint)配置
+2.将Blog项目按照项目结构搭建起来

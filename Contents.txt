@@ -1,0 +1,80 @@
+﻿
+
+                           AJAX
+
+DAY01: cookie 、 session 、 XMLHttpRequest异步对象 
+   1-回顾
+   2-cookie01
+   3-cookie02
+   4-cookie03
+   5-cookie04
+   6-cookie05
+   7-session01
+   8-session02
+   9-session03
+  10-session04
+  11-ajax简介
+  12-ajax-异步对象
+
+DAY02: xhr的成员 、 AJAX使用步骤 、 JSON 、 jQuery循环遍历 
+   1-回顾
+   2-ajax-xhr
+   3-ajax-get
+   4-ajax练习
+   5-ajax-post
+   6-ajax练习讲解
+   7-json01
+   8-json02
+
+DAY03: 前后端处理JSON 、 jQuery对AJAX支持01 
+   1-回顾
+   2-json03
+   3-json04
+   4-练习讲解
+   5-省市级联01
+   6-省市级联02
+   7-PROJECT02 AJAX01:$.obj.load()
+   8-PROJECT02 AJAX02:$.get()
+
+
+DAY04: jQuery对AJAX支持02 、 跨域 、 项目准备 
+   1-课程回顾
+   2-PROJECT02 AJAX03:$.ajax()
+   3-PROJECT02 AJAX04:
+   4-练习题讲解
+   5-跨域01
+   6-跨域02
+   7-跨域03
+   8-练习题讲解
+   9-跨域04
+  10-项目准备01
+  11-项目准备02
+ 
+                                             FLASK项目
+
+
+DAY01: blog项目结构搭建 、 模型的创建 、 首页功能 
+   1-blog项目结构搭建01
+   2-blog项目结构搭建02
+   3-blog项目结构搭建03
+   4-blog项目结构搭建04
+   5-blog项目结构搭建05
+   6-模型的创建01
+   7-模型的创建02
+   8-模型的创建03
+  9-首页功能01
+  10-首页功能02
+
+
+DAY02: 博客内容输出 、 登录注册功能 、 发表博客 、 博客详情页 、
+   1-博客内容输出01
+   2-博客内容输出02
+   3-登录基本功能
+   4-完善登录，登出和注册概述
+   5-注册功能
+   6-发表博客01
+   7-发表博客02
+   8-发表博客03
+   9-发表博客04
+  10-博客详情页概述
+  11-实现博客详情页
