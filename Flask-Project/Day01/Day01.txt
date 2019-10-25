@@ -4,3 +4,12 @@
 
 	使用蓝图(Blueprint)配置
 2.将Blog项目按照项目结构搭建起来
+
+
+<li class="timer">{{ topic.pub_date.strftime("%Y-%m-%d") }}</li>
+strftime("%Y-%m-%d")
+
+{% for x in Y%}
+    #存在内置变量loop，拿过来可以直接用
+    loop.inedx #表示遍历的次数
+{% endfor%}

@@ -20,8 +20,6 @@ class Users(db.Model):
         realname=self.realname
 
 
-
-
 @app.route('/01_getxhr')
 def getxhr():
     return render_template('01_getxhr.html')

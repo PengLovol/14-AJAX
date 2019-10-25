@@ -15,7 +15,7 @@ def create_app():
   #配置启动模式为调试模式
   app.config['DEBUG'] = True
   #配置数据库的连库字符串
-  app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:123456@localhost:3306/blog"
+  app.config['SQLALCHEMY_DATABASE_URI']="mysql://root:120913@localhost:3306/blog"
   #配置数据库内容在更新时自动提交
   app.config['SQLALCHMEY_COMMIT_ON_TEARDOWN']=True
   #配置session所需要的秘钥

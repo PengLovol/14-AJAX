@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="utf-8">
+		<link href="/static/css/login_reglogin.css" rel='stylesheet' type='text/css' />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="/static/js/jquery-1.11.3.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#loginname_vertify").blur(function () {
+                    $.ajax({
+                         //请求地址
+                        url: '/vertify_loginname',
+                        //请求方式
+                        type: 'get',
+                            //请求参数
+                        data:'loginname='+$("#loginname_vertify").val(),
+                            //响应回来的数据格式
+                        success:function (data) {
+                            if (data=='N'){
+                                alert('登录名已存在')
+                            }
+                        }
+                    })
+                });
+                $("#pwd_vertify").blur(function () {
+                    password=$("#pwd").val();
+                    password_again=$("#pwd_vertify").val();
+                    if(password!=password_again){
+                        alert('两次输入密码不一致')
+                    }
+
+                })
+            })
+    </script>
+</head>
+<body>
+		<div class="bg">
+				<img src="/static/images/c.jpg" alt="">
+			</div>
+	<div class="main">
+		<div class="header" >
+			<h1>创建一个新账户！</h1>
+		</div>
+		<p></p>
+			<form action="/register" method="post">
+				<ul class="left-form">
+					<h2>新账户:</h2>
+                    <li>
+                        <input type="text" name="loginname" id="loginname_vertify" placeholder="请输入登录名" required/>
+                        <span id="insert"></span>
+						<div class="clear"> </div>
+					</li>
+					<li>
+                        <input type="text" name="username" placeholder="请输入用户名" required/>
+						<div class="clear"> </div>
+					</li> 
+					<li>
+                        <input type="email" name="email" placeholder="请输入邮箱" required/>
+						<div class="clear"> </div>
+					</li> 
+					<li>
+                        <input type="url" name="url" placeholder="请输入个人主站地址" required/>
+						<div class="clear"> </div>
+					</li> 
+					<li>
+                        <input type="password" name="password" id="pwd" placeholder="请输入密码" required/>
+						<div class="clear"> </div>
+          </li>
+                    <li>
+              <input type="password" name="password_again" id="pwd_vertify" placeholder="请再次确认密码" required/>
+              <div class="clear"> </div>
+            </li>
+					<!--用于记录注册跳转来源，方便注册之后跳转之前的页面-->
+                    <input type="hidden" name="source_url" value="">
+					<input type="submit" value="创建并登录">
+					<div class="clear"> </div>
+				</ul>
+				<div class="clear"> </div>
+			</form>
+	</div>
+
+</body>
+</html>

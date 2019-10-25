@@ -1,0 +1,35 @@
+副文本编辑器：CKEditor
+更改release.html:
+            1) 95:<textarea  style="margin-left: 12px;margin-right: 12px"></textarea>
+             2)删除：   139：<script>
+                                var E = window.wangEditor
+                                var editor = new E('#editor')
+                                // 或者 var editor = new E( document.getElementById('editor') )
+                                editor.create()
+                           </script>
+             3)更改多行文本框的高和宽：95：<textarea name="content" cols="100" rows="10" style="margin-left: 12px;margin-right: 12px"></textarea>
+             4)92： 增加p标签：显示博客的分类
+                   <p style="margin: 15px 0 0 12px;">
+                    <select name="category"></select>
+                    文章类别
+                </p>
+              5)增加上传图片：
+                                    <!--上传图片-->
+                        <p style="margin: 15px 0 0 12px;">
+                            <input type="file" name="picture" >
+                        </p>
+
+发表文章功能：增加文章类别，登录权限验证
+             文件地址上传要在表单里加入属性<form action="/release" method="post" enctype="multipart/form-data">
+
+
+
+             # 为pub_date赋值：topic.pub_date = datetime.datetime.now().strftime("%Y-%m-%d")
+             #当前文件所在目录：basedir=os.path.dirname(__file__)
+               得到前一级目录： basedir = os.path.dirname(os.path.dirname(__file__))
+
+              #显示部分内容： <p class="blogtext">
+                                     {{ topic.content|truncate(200,true)}}
+                           </p>
+
+             获取当前时间:datetime.datetime.now()..strftime("%Y%m%d%H%M%S%f")
